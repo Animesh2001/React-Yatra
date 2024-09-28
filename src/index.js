@@ -1,16 +1,22 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
+import ReactDOM from 'react-dom/client'
 
-// this is how react also use to work.
-// const root = document.getElementById('root')
-// const p = document.createElement('p')
-// p.innerText = "Hello from Animesh part 2";
-// root.appendChild(p)
+const apiData = "Hello Sis"
+const isMorning = false
+const morningText = "good morning user"
+const afternoonText = "afternoon user"
 
-const child1 = React.createElement('p',{},"I am a child")
-const child2 = React.createElement('p',{},"I am a child")
-// const div = React.createElement('div',{className:'text'},[child1,child2])
-const div = <div> Hello Chutiyo</div>
-console.log(div)
+const morningElement = <div>{morningText} it is 8am</div>
+const afternoonElement = <div>{afternoonText} it is 6pm</div>
+const greetingElement = isMorning ? morningElement : afternoonElement
+
+const GreetingComponent = function(){
+    // we can get rid of extra div by using <> only this. 
+    return <>
+        {greetingElement}
+        i am inside component now
+    </>
+}
+console.log(GreetingComponent)
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(div);  
+root.render(GreetingComponent());  
