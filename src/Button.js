@@ -2,7 +2,7 @@ import React from 'react'
  
 //keep function name capital
 const Button = (props) =>{
-    console.log(props)
+    console.log("button rendered")
     //here you are destructuring the props
     const {children, clickAction} = props
     const handleClick = () =>{

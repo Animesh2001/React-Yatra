@@ -1,32 +1,23 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Button from './Button';
 import Text from './text'
 
 const App = () => {
-    //now we will render something using this data
-    const data = [
-        { id: 'a', text: "text 1" },
-        { id: 'b', text: "text 2" },
-        { id: 'c', text: "text 3" },
-        { id: 'd', text: "text 4" },
-        { id: 'e', text: "text 5" }
-    ]
+    const [message, updateMessage] = useState("hello user, good morning")
 
-    //we can do like this , but instead of doing this we can do something better.
-    // return <>
-    //     <Text>{data[0].text}</Text>
-    //     <Text>{data[1].text}</Text>
-    //     <Text>{data[2].text}</Text>
-    //     <Text>{data[3].text}</Text>
-    //     <Text>{data[4].text}</Text>
+    const changeMessage= () =>{
+        console.log('before update', message)
+        updateMessage((prevData)=>{
+            console.log("previous data is", prevData)
 
-    // </>
-
-    //using map we can generate the array dynamically in javascript.
+            return "hello user , good afternoon"
+        })
+        console.log('after update', message)
+    }
     return <>
-        {data.map((item,index)=> <Text key={index}>{item.text}</Text>)}   
-</>
-
+        <div>{message}</div>
+        <Button clickAction={changeMessage}>Change Message</Button>
+    </>
 }
 
 export default App;
